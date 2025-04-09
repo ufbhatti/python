@@ -12,9 +12,11 @@ app=Flask(__name__)
 @app.route('/form',methods=['GET','POST'])
 def form():
     if request.method=='POST':
-        username=request.form['username']
-        return f"Hello,{username}!"
+        fname=request.form['fname']
+        lname=request.form['lname']
+        email=request.form['email']
+        address=request.form['address']
+        return render_template('result.html',fname=fname,lname=lname,email=email,address=address)
     return render_template('form.html')
-
 if __name__=='__main__':
     app.run(debug=True)
